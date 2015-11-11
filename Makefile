@@ -1,5 +1,5 @@
 
-all: build/shaping.js
+all: build/shaping.min.js
 
 bundle.js: wrapper.js
 	./node_modules/.bin/uglifyjs module-prefix.js jquery-2.1.0.min.js lodash-2.4.1.min.js scenery-0.1-dev.js \
@@ -26,8 +26,9 @@ build/shaping.js: objs/shaping/wrapper.js src/text-shape.js src/module-prefix.js
 	cat src/module-prefix.js objs/shaping/wrapper.js src/text-shape.js src/module-postfix.js >> build/shaping.js
 	echo "})();" >> build/shaping.js
 
-build/shaping.min.js: shaping.js
-
+build/shaping.min.js: build/shaping.js
+	npm install uglifyjs
+	./node_modules/.bin/uglifyjs build/shaping.js -o build/shaping.min.js --compress --mangle
 
 clean:
 	rm -f objs/shaping/*
