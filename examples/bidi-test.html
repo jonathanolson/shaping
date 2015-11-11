@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Bi-Directional Cross-Browser Text Proof-of-Concept</title>
+    <style type="text/css">
+      #scene {
+        border: 1px solid black;
+        background-color: #fafafa;
+        margin-top: 10px;
+      }
+
+      #firstText {
+        font-size: 20px;
+      }
+
+      .sect {
+        clear: both;
+        padding-top: 15px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .codepoint {
+        float: left;
+        text-align: center;
+        width: 15px;
+      }
+
+      .codepoint .display {
+        line-height: 20px;
+        font-size: 20px;
+        height: 20px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+      }
+
+      .codepoint .hex {
+        line-height: 10px;
+        font-size: 10px;
+      }
+
+      .codepoint .embedding {
+        margin-top: 3px;
+        line-height: 14px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bi-Directional Cross-Browser Text Proof-of-Concept</h1>
+    <div>
+      <p>
+        Testing text rendering and accurate bounds/metrics by using <a href="http://www.freetype.org/">FreeType</a>/<a href="http://www.freedesktop.org/wiki/Software/HarfBuzz/">Harfbuzz</a>/<a href="http://fribidi.org/">FriBidi</a> via <a href="https://github.com/kripken/emscripten">Emscripten</a>.
+      </p>
+      <p>
+        Uses FreeType to extract glyphs and font information, Harfbuzz for the shaping and complex layout, and FriBidi for bi-directional text support. Since it displays the actual glyph paths, the only visual difference between browsers should be the Canvas/SVG anti-aliasing.
+      </p>
+      <div>
+        <input id="firstText" type="text" autocomplete="off" size="60" value="He said &ldquo;&#x202b;قالت '&#x202a;they said: &#x202b;אתה אמר&#x202c;&#x202c;' حول النص ثنائي الاتجاه&#x202c;&rdquo;"></input>
+        <label for="ltrBox">
+          <input autocomplete="off" type="radio" name="directionChoice" id="ltrBox" checked>LTR</input>
+        </label>
+        <label for="rtlBox">
+          <input autocomplete="off" type="radio" name="directionChoice" id="rtlBox">RTL</input>
+        </label>
+      </div>
+      <div class="sect">Visual output</div>
+      <div id="scene" style="width: 1024px; height: 70px; position: relative; top: 0; left: 0;"></div>
+      Render with:
+      <label for="canvasBox">
+        <input autocomplete="off" type="radio" name="renderChoice" id="canvasBox" checked>Canvas</input>
+      </label>
+      <label for="svgBox">
+        <input autocomplete="off" type="radio" name="renderChoice" id="svgBox">SVG</input>
+      </label>
+      <div class="sect">Logical order</div>
+      <div id="logical">
+      </div>
+      <div class="sect">Visual order and embedding levels</div>
+      <div id="visual">
+      </div>
+      <div class="sect">Font</div>
+      <p>
+        <a href="http://www.google.com/get/noto/#/family/noto-serif">Noto Serif</a>,
+        <a href="http://www.google.com/get/noto/#/family/noto-naskh-arab">Noto Naskh Arabic</a>, and
+        <a href="http://www.google.com/get/noto/#/family/noto-sans-hebr">Noto Sans Hebrew</a> are currently
+        embedded. To replace or install fonts for certain scripts, upload a file:
+      </p>
+      Default: <input type="file" id="default-font-file"><br>
+      Arabic: <input type="file" id="arabic-font-file"><br>
+      Hebrew: <input type="file" id="hebrew-font-file"><br>
+    </div>
+
+    <script type="text/javascript" src="jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="lodash-2.4.1.min.js"></script>
+    <script type="text/javascript" src="scenery-0.1-dev.js"></script>
+    <script type="text/javascript" src="punycode.min.js"></script>
+    <script type="text/javascript" src="../build/shaping.js"></script>
+    <script type="text/javascript" src="fonts/notoNaskhArabicRegularBase64.js"></script>
+    <script type="text/javascript" src="fonts/notoSerifRegularBase64.js"></script>
+    <script type="text/javascript" src="fonts/notoSansHebrewRegularBase64.js"></script>
+    <script type="text/javascript" src="bidi-test.js"></script>
+  </body>
+</html>
