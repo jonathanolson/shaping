@@ -1,0 +1,11 @@
+The combined code and examples are all GPLv3-compatible. See licenses under the licenses/ directory for more details on each.
+
+The source code under src/ (by Jonathan Olson) is provided under the MIT license
+
+FreeType is covered by GPLv2 or the FreeType License which is compatible with GPLv3.
+FriBidi is covered by the GPL (see https://github.com/behdad/fribidi), allowing future GPL versions
+Harfbuzz is covered by the old MIT license (https://github.com/behdad/harfbuzz/blob/master/COPYING)
+zlib is covered under the zlib/libpng license
+UCDN is covered by the ISC license
+
+The Noto fonts are under the Apache License, Version 2.0 (processed before the upgrade to the SIL Open Font License 1.1). See https://www.google.com/get/noto/updates/

@@ -1,5 +1,5 @@
 
-all: build/shaping.min.js
+all: shaping.min.js
 
 bundle.js: wrapper.js
 	./node_modules/.bin/uglifyjs module-prefix.js jquery-2.1.0.min.js lodash-2.4.1.min.js scenery-0.1-dev.js \
@@ -20,16 +20,17 @@ objs/shaping/wrapper.o: src/wrapper.c
 	mkdir -p objs/shaping
 	~/dev/emscripten/emsdk_portable/emscripten/1.16.0/emcc -O3 -c src/wrapper.c -I./include -I./include/freetype -o objs/shaping/wrapper.o
 
-build/shaping.js: objs/shaping/wrapper.js src/text-shape.js src/module-prefix.js src/module-postfix.js
+shaping.js: objs/shaping/wrapper.js src/text-shape.js src/module-prefix.js src/module-postfix.js
 	mkdir -p build
-	echo "(function(){" > build/shaping.js
-	cat src/module-prefix.js objs/shaping/wrapper.js src/text-shape.js src/module-postfix.js >> build/shaping.js
-	echo "})();" >> build/shaping.js
+	echo "(function(){" > shaping.js
+	cat src/module-prefix.js objs/shaping/wrapper.js src/text-shape.js src/module-postfix.js >> shaping.js
+	echo "})();" >> shaping.js
 
-build/shaping.min.js: build/shaping.js
+shaping.min.js: shaping.js
 	npm install uglifyjs
-	./node_modules/.bin/uglifyjs build/shaping.js -o build/shaping.min.js --compress --mangle
+	./node_modules/.bin/uglifyjs shaping.js -o shaping.min.js --compress --mangle
 
 clean:
 	rm -f objs/shaping/*
-	rm -f build/*
+	rm -f shaping.js
+	rm -f shaping.min.js
