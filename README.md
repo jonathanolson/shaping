@@ -9,6 +9,8 @@ It uses FreeType/FriBidi/Harfbuzz, so it is able to read in most font formats, a
 
 ### Example Usage
 
+In HTML, load in [Kite](https://github.com/phetsims/kite) and its [lodash](https://lodash.com/) dependency.
+
 ```js
 // load the font's data into memory
 var notoSerif = shaping.createBase64FontHandle( notoSerifRegularBase64 );
