@@ -96,7 +96,7 @@ scriptData[ shaping.Script.HEBREW ] = {
 };
 ```
 
-Then for display or font metrics, Shaping.js provides a Kite Shape for each glyph:
+Then for display or font metrics, Shaping.js provides a [Kite](https://github.com/phetsims/kite) Shape for each glyph:
 ```js
 shaping.getGlyph( {fontHandle} font, {number} index )
 ```
