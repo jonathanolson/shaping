@@ -106,5 +106,7 @@ shaping.getGlyph( {fontHandle} font, {number} index )
 ```
 
 Additionally, there are two more helper functions:
+
 ```shaping.getScript( {number} codepoint )``` - Returns the detected shaping.Script for the integer-valued Unicode codepoint.
+
 ```shaping.reorderUnicode( {Array.<number>} codepoints, {shaping.Direction} direction )``` - Returns a structure with codepoints and details on the mapping between the reordering.
