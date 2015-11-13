@@ -7,7 +7,7 @@ NOTE: It's currently very experimental and rough. Use at your own risk!
 
 It uses FreeType/FriBidi/Harfbuzz, so it is able to read in most font formats, and orders the displayed text according to the Unicode Bi-Directional algorithm.
 
-### Example Usage
+### Examples
 
 In HTML, load in [Kite](https://github.com/phetsims/kite) and its [lodash](https://lodash.com/) dependency.
 
@@ -38,6 +38,8 @@ glyphInfo.glyphs.forEach( function( glyph ) {
   glyphShape.getSVGPath(); // Or get the SVG path of the glyph as a string, which can be used with SVG
 } );
 ```
+
+For a more advanced example of what it's capable of, see the [Bi-Directional Cross-Browser Text Proof-of-Concept](http://jonathan-olson.com/shaping/examples/bidi-test.html).
 
 ### API
 
