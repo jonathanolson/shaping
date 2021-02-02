@@ -39,7 +39,7 @@ glyphInfo.glyphs.forEach( function( glyph ) {
 } );
 ```
 
-For a more advanced example of what it's capable of, see the [Bi-Directional Cross-Browser Text Proof-of-Concept](http://jonathan-olson.com/shaping/examples/bidi-test.html).
+For a more advanced example of what it's capable of, see the [Bi-Directional Cross-Browser Text Proof-of-Concept](http://jonathanolson.net/shaping/examples/bidi-test.html).
 
 ### API
 
